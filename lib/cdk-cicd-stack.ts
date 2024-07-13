@@ -7,13 +7,13 @@ export class CdkCicdStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const githubToken = SecretValue.secretsManager('github-token');
+    // const githubToken = SecretValue.secretsManager('github-token');
 
     new CodePipeline(this, 'AwesomePipeline', {
       pipelineName: 'AwesomePipeline',
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub('DacDInh147/cdk-cicd', 'main', {
-          authentication: githubToken,
+        input: CodePipelineSource.gitHub('DacDinh147/cdk-cicd', 'main', {
+          // authentication: githubToken,
         }),
         commands: [
           'npm ci',
